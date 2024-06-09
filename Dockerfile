@@ -6,7 +6,7 @@ COPY . /app
 RUN mvn clean
 RUN mvn package -DskipTests -X
 
-FROM openjdk:11
+FROM openjdk:17
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/app.jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
